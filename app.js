@@ -102,7 +102,7 @@ function moveIntoSquareBelow() {
 //for row of Four
   function checkRowForFour() {
     for (i = 0; i < 60; i ++) {
-      let rowOfFour = [i, i+1, i+2, i+4]
+      let rowOfFour = [i, i+1, i+2, i+3]
       let decidedColor = squares[i].style.backgroundImage
       const isBlank = squares[i].style.backgroundImage === ''
 
@@ -177,7 +177,7 @@ checkColumnForFour()
   }
 checkColumnForThree()
 
-
+// Checks carried out indefintely - Add Butotn to clear interval for best practise
 window.setInterval(function(){
     checkRowForFour()
     checkColumnForFour()
