@@ -17,6 +17,10 @@ In addition to this, we will also be practising using inbuilt methods such as:
 - contains()
 - add()
 - remove()
+- createElement()
+- appendChild()
+- push()
+- continue
 
 And many more.
 
