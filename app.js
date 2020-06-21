@@ -74,7 +74,19 @@ function dragEnd() {
     let validMove = validMoves.includes(squareIdBeingReplaced)
 
     if (squareIdBeingReplaced && validMove) {
-        squareIdBeingReplaced = null
+      let scoredRowOfFour = checkRowForFour();
+      let scoredColumnOfFour = checkColumnForFour();
+      let scoredRowOfThree = checkRowForThree();
+      let scoredColumnOfThree = checkColumnForThree();
+      //check if any combo was scored
+      if(scoredRowOfFour || scoredColumnOfFour || scoredRowOfThree || scoredColumnOfThree){
+        squareIdBeingReplaced = null;
+      }
+      //if no combo scored swap back to original candies
+      else if(!scoredRowOfFour && !scoredColumnOfFour && !scoredRowOfThree && !scoredColumnOfThree){
+        squares[squareIdBeingDragged].style.backgroundImage = colorBeingDragged;
+        squares[squareIdBeingReplaced].style.backgroundImage = colorBeingReplaced;
+      }
     }  else if (squareIdBeingReplaced && !validMove) {
        squares[squareIdBeingReplaced].style.backgroundImage = colorBeingReplaced
        squares[squareIdBeingDragged].style.backgroundImage = colorBeingDragged
