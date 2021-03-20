@@ -5,7 +5,6 @@ const width = 8
 const squares = []
 let score = 0
 
-
 const candyColors = [
     'url(images/red-candy.png)',
     'url(images/yellow-candy.png)',
@@ -14,7 +13,6 @@ const candyColors = [
     'url(images/green-candy.png)',
     'url(images/blue-candy.png)'
   ]
-
 
 //create your board
 function createBoard() {
@@ -177,12 +175,12 @@ checkColumnForFour()
   }
 checkColumnForThree()
 
-// Checks carried out indefintely - Add Butotn to clear interval for best practise
+// Checks carried out indefintely - Add Button to clear interval for best practise, or clear on game over/game won. If you have this indefinite check you can get rid of calling the check functions above.
 window.setInterval(function(){
     checkRowForFour()
     checkColumnForFour()
     checkRowForThree()
     checkColumnForThree()
     moveIntoSquareBelow()
-  }, 100);
+  }, 100)
 })
