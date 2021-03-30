@@ -72,7 +72,19 @@ function dragEnd() {
     let validMove = validMoves.includes(squareIdBeingReplaced)
 
     if (squareIdBeingReplaced && validMove) {
-        squareIdBeingReplaced = null
+      let scoredRowOfFour = checkRowForFour();
+      let scoredColumnOfFour = checkColumnForFour();
+      let scoredRowOfThree = checkRowForThree();
+      let scoredColumnOfThree = checkColumnForThree();
+      //check if any combo was scored
+      if(scoredRowOfFour || scoredColumnOfFour || scoredRowOfThree || scoredColumnOfThree){
+        squareIdBeingReplaced = null;
+      }
+      //if no combo scored swap back to original candies
+      else if(!scoredRowOfFour && !scoredColumnOfFour && !scoredRowOfThree && !scoredColumnOfThree){
+        squares[squareIdBeingDragged].style.backgroundImage = colorBeingDragged;
+        squares[squareIdBeingReplaced].style.backgroundImage = colorBeingReplaced;
+      }
     }  else if (squareIdBeingReplaced && !validMove) {
        squares[squareIdBeingReplaced].style.backgroundImage = colorBeingReplaced
        squares[squareIdBeingDragged].style.backgroundImage = colorBeingDragged
@@ -113,10 +125,12 @@ function moveIntoSquareBelow() {
         rowOfFour.forEach(index => {
         squares[index].style.backgroundImage = ''
         })
+        return true;
       }
     }
+    return false;
   }
-  checkRowForFour()
+
 
 //for column of Four
   function checkColumnForFour() {
@@ -131,10 +145,12 @@ function moveIntoSquareBelow() {
         columnOfFour.forEach(index => {
         squares[index].style.backgroundImage = ''
         })
+        return true;
       }
     }
+    return false;
   }
-checkColumnForFour()
+
 
   //for row of Three
   function checkRowForThree() {
@@ -152,10 +168,12 @@ checkColumnForFour()
         rowOfThree.forEach(index => {
         squares[index].style.backgroundImage = ''
         })
+        return true;
       }
     }
+    return false;
   }
-  checkRowForThree()
+
 
 //for column of Three
   function checkColumnForThree() {
@@ -170,10 +188,11 @@ checkColumnForFour()
         columnOfThree.forEach(index => {
         squares[index].style.backgroundImage = ''
         })
+        return true;
       }
     }
+    return false;
   }
-checkColumnForThree()
 
 // Checks carried out indefintely - Add Button to clear interval for best practise, or clear on game over/game won. If you have this indefinite check you can get rid of calling the check functions above.
 window.setInterval(function(){
