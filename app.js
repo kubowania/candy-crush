@@ -81,7 +81,7 @@ function dragEnd() {
 
 //drop candies once some have been cleared
 function moveIntoSquareBelow() {
-    for (i = 0; i < 55; i ++) {
+    for (i = 0; i <= 55; i ++) {
         if(squares[i + width].style.backgroundImage === '') {
             squares[i + width].style.backgroundImage = squares[i].style.backgroundImage
             squares[i].style.backgroundImage = ''
@@ -99,7 +99,7 @@ function moveIntoSquareBelow() {
 ///Checking for Matches
 //for row of Four
   function checkRowForFour() {
-    for (i = 0; i < 60; i ++) {
+    for (i = 0; i <= 60; i ++) {
       let rowOfFour = [i, i+1, i+2, i+3]
       let decidedColor = squares[i].style.backgroundImage
       const isBlank = squares[i].style.backgroundImage === ''
@@ -120,7 +120,7 @@ function moveIntoSquareBelow() {
 
 //for column of Four
   function checkColumnForFour() {
-    for (i = 0; i < 39; i ++) {
+    for (i = 0; i <= 39; i ++) {
       let columnOfFour = [i, i+width, i+width*2, i+width*3]
       let decidedColor = squares[i].style.backgroundImage
       const isBlank = squares[i].style.backgroundImage === ''
@@ -138,7 +138,7 @@ checkColumnForFour()
 
   //for row of Three
   function checkRowForThree() {
-    for (i = 0; i < 61; i ++) {
+    for (i = 0; i <= 61; i ++) {
       let rowOfThree = [i, i+1, i+2]
       let decidedColor = squares[i].style.backgroundImage
       const isBlank = squares[i].style.backgroundImage === ''
@@ -159,7 +159,7 @@ checkColumnForFour()
 
 //for column of Three
   function checkColumnForThree() {
-    for (i = 0; i < 47; i ++) {
+    for (i = 0; i <= 47; i ++) {
       let columnOfThree = [i, i+width, i+width*2]
       let decidedColor = squares[i].style.backgroundImage
       const isBlank = squares[i].style.backgroundImage === ''
